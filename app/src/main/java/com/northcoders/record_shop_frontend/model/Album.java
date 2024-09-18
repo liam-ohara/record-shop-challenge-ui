@@ -1,10 +1,12 @@
 package com.northcoders.record_shop_frontend.model;
 
+import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
+import com.northcoders.record_shop_frontend.BR;
 
-public class Album {
+public class Album extends BaseObservable {
 
     @SerializedName("albumId")
     private Long albumId;
@@ -62,25 +64,31 @@ public class Album {
 
     public void setAlbumId(Long albumId) {
         this.albumId = albumId;
+        notifyPropertyChanged(BR.albumId);
     }
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.albumId);
     }
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+        notifyPropertyChanged(BR.artist);
     }
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+        notifyPropertyChanged(BR.publisher);
     }
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+        notifyPropertyChanged(BR.releaseDate);
     }
 
     public void setGenre(String genre) {
         this.genre = genre;
+        notifyPropertyChanged(BR.genre);
     }
 }
