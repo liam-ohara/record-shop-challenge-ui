@@ -1,12 +1,20 @@
 package com.northcoders.record_shop_frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Album {
 
+    @SerializedName("albumId")
     private Long albumId;
+    @SerializedName("name")
     private String name;
+    @SerializedName("artist")
     private Artist artist;
+    @SerializedName("publisher")
     private Publisher publisher;
+    @SerializedName("releaseDate")
     private String releaseDate;
+    @SerializedName("genre")
     private String genre;
 
     public Album() {}

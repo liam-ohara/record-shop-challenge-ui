@@ -1,8 +1,12 @@
 package com.northcoders.record_shop_frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Publisher {
 
+    @SerializedName("publisherID")
     private Long publisherId;
+    @SerializedName("name")
     private String name;
 
     public Publisher() {}

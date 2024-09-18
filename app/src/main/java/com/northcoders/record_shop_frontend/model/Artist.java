@@ -1,8 +1,12 @@
 package com.northcoders.record_shop_frontend.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Artist {
 
+    @SerializedName("artistId")
     private Long artistId;
+    @SerializedName("name")
     private String name;
 
     public Artist() {}
