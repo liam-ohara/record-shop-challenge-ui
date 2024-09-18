@@ -32,7 +32,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264">
+        app:layout_constraintVertical_bias="0.264"
+        app:cardBackgroundColor="@color/black">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="10dp"
-                app:srcCompat="@drawable/vinyl_record" />
+                app:srcCompat="@drawable/vinyl_record"
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/album_genre"
@@ -60,7 +62,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/album_name"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="100dp"
+                android:textColorHint="#00ff00"
+                android:textColor="#00ff00"/>
 
             <TextView
                 android:id="@+id/album_name"
@@ -71,7 +75,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/artist_name"
@@ -82,7 +88,9 @@
                 app:layout_constraintLeft_toLeftOf="@id/album_name"
                 app:layout_constraintTop_toBottomOf="@id/album_name"
                 android:layout_marginTop="5dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/publisher_name"
@@ -93,7 +101,9 @@
                 app:layout_constraintLeft_toLeftOf="@id/album_name"
                 app:layout_constraintTop_toBottomOf="@id/artist_name"
                 android:layout_marginTop="5dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/release_date"
@@ -104,7 +114,9 @@
                 app:layout_constraintLeft_toLeftOf="@id/album_name"
                 app:layout_constraintTop_toBottomOf="@id/publisher_name"
                 android:layout_marginTop="5dp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
