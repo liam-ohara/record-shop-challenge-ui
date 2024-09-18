@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="album"
+            type="com.northcoders.record_shop_frontend.model.Album" />
+        <variable
+            name="artist"
+            type="com.northcoders.record_shop_frontend.model.Artist" />
+        <variable
+            name="publisher"
+            type="com.northcoders.record_shop_frontend.model.Publisher" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="5dp"
+        android:foreground="@drawable/cardview_border"
+        app:contentPaddingTop="10dp"
+        app:contentPaddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/record_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/vinyl_record" />
+
+            <TextView
+                android:id="@+id/album_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:hint="album_genre"
+                android:rotation="90"
+                android:text="@{album.genre}"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/album_name"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"/>
+
+            <TextView
+                android:id="@+id/album_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="album_name"
+                android:text="@{album.name}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="album_name"
+                android:text="@{album.artist.name}"
+                app:layout_constraintLeft_toLeftOf="@id/album_name"
+                app:layout_constraintTop_toBottomOf="@id/album_name"
+                android:layout_marginTop="5dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/publisher_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="publisher_name"
+                android:text="@{album.publisher.name}"
+                app:layout_constraintLeft_toLeftOf="@id/album_name"
+                app:layout_constraintTop_toBottomOf="@id/artist_name"
+                android:layout_marginTop="5dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="release_date"
+                android:text="@{`Release date: `+ album.releaseDate}"
+                app:layout_constraintLeft_toLeftOf="@id/album_name"
+                app:layout_constraintTop_toBottomOf="@id/publisher_name"
+                android:layout_marginTop="5dp"
+                android:textStyle="normal" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

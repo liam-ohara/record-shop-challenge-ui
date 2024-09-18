@@ -1,5 +1,7 @@
 package com.northcoders.record_shop_frontend.model;
 
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Artist {
@@ -16,10 +18,12 @@ public class Artist {
         this.name = name;
     }
 
+    @Bindable
     public Long getArtistId() {
         return artistId;
     }
 
+    @Bindable
     public String getName() {
         return name;
     }

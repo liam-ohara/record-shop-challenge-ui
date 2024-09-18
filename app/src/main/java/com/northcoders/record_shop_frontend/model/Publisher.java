@@ -1,5 +1,7 @@
 package com.northcoders.record_shop_frontend.model;
 
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Publisher {
@@ -16,10 +18,12 @@ public class Publisher {
         this.name = name;
     }
 
+    @Bindable
     public Long getPublisherId() {
         return publisherId;
     }
 
+    @Bindable
     public String getName() {
         return name;
     }

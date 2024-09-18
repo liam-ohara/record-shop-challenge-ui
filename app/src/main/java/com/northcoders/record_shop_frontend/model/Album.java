@@ -1,5 +1,7 @@
 package com.northcoders.record_shop_frontend.model;
 
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Album {
@@ -28,26 +30,32 @@ public class Album {
         this.genre = genre;
     }
 
+    @Bindable
     public Long getAlbumId() {
         return albumId;
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
 
+    @Bindable
     public Artist getArtist() {
         return artist;
     }
 
+    @Bindable
     public Publisher getPublisher() {
         return publisher;
     }
 
+    @Bindable
     public String getReleaseDate() {
         return releaseDate;
     }
 
+    @Bindable
     public String getGenre() {
         return genre;
     }
