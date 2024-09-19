@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>AVANT_GARDE</item>
+        <item>BLUES</item>
+        <item>CLASSICAL</item>
+        <item>COUNTRY</item>
+        <item>EASY_LISTENING</item>
+        <item>ELECTRONIC</item>
+        <item>FOLK</item>
+        <item>HIP_HOP</item>
+        <item>JAZZ</item>
+        <item>POP</item>
+        <item>RHYTHM_AND_BLUES</item>
+        <item>ROCK</item>
+    </string-array>
+</resources>
