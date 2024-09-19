@@ -36,7 +36,11 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         newAlbumBinding.setAlbum(album);
 
+        addAlbumClickHandlers = new AddAlbumClickHandlers(album, this, viewModel);
+
         newAlbumBinding.setClickhandler(addAlbumClickHandlers);
+
+
 
     }
 }

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
+    private MainActivityClickHandler mainActivityClickHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         mainActivityViewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
         getAllAlbums();
+
+        mainActivityClickHandler = new MainActivityClickHandler(this);
+
+        activityMainBinding.setClickhandler(mainActivityClickHandler);
     }
 
     private void getAllAlbums() {
@@ -59,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         albumAdapter.notifyDataSetChanged();
-
-
-
 
     }
 }
