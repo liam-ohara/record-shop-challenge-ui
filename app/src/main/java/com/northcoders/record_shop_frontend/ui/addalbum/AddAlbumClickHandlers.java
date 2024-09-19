@@ -24,7 +24,7 @@ public class AddAlbumClickHandlers {
     public void onBackClicked(View view) {
 
         Intent intent = new Intent(view.getContext(), MainActivity.class);
-        view.getContext().startActivity(intent);
+        context.startActivity(intent);
     }
 
     public void onSaveClicked(View view) {
@@ -46,7 +46,7 @@ public class AddAlbumClickHandlers {
 
             mainActivityViewModel.postAlbum(newAlbum);
 
-            view.getContext().startActivity(intent);
+            context.startActivity(intent);
 
         }
     }
