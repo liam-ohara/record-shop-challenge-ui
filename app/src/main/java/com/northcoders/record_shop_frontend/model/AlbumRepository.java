@@ -59,7 +59,6 @@ public class AlbumRepository {
 
                 Toast toastSuccess = Toast.makeText(recordShop.getApplicationContext(), "Posting album...", Toast.LENGTH_SHORT);
                 toastSuccess.show();
-
             }
 
             @Override
@@ -67,7 +66,6 @@ public class AlbumRepository {
 
                 Toast toastFail = Toast.makeText(recordShop.getApplicationContext(), "Posting failed!", Toast.LENGTH_SHORT);
                 toastFail.show();
-
             }
         });
 
