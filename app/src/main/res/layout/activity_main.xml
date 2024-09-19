@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="clickhandler"
+            type="com.northcoders.record_shop_frontend.ui.mainactivity.MainActivityClickHandler" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -48,6 +54,23 @@
         app:layout_constraintTop_toBottomOf="@+id/stock"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_album_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:fabCustomSize="30dp"
+        android:clickable="true"
+        android:contentDescription="Add new album"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:layout_constraintStart_toEndOf="@id/stock"
+        app:layout_constraintTop_toBottomOf="@id/shop_name"
+        android:layout_marginLeft="10dp"
+
+
+
+        android:onClick="@{clickhandler::onAddAlbumClicked"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
