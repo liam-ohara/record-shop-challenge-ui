@@ -1,7 +1,9 @@
 package com.northcoders.record_shop_frontend.model;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -55,10 +57,16 @@ public class AlbumRepository {
             @Override
             public void onResponse(Call<Album> call, Response<Album> response) {
 
+                Toast toastSuccess = Toast.makeText(recordShop.getApplicationContext(), "Posting album...", Toast.LENGTH_SHORT);
+                toastSuccess.show();
+
             }
 
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
+
+                Toast toastFail = Toast.makeText(recordShop.getApplicationContext(), "Posting failed!", Toast.LENGTH_SHORT);
+                toastFail.show();
 
             }
         });
