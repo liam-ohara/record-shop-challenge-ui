@@ -19,10 +19,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
 
     List<Album> albumList;
     Context context;
+    RecyclerViewInterface recyclerViewInterface;
 
-    public AlbumAdapter(List<Album> albumList, Context context) {
+    public AlbumAdapter(List<Album> albumList, Context context, RecyclerViewInterface recyclerViewInterface) {
         this.albumList = albumList;
         this.context = context;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -33,7 +35,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 LayoutInflater.from(parent.getContext()),
                 R.layout.album_item, parent, false);
 
-        return new AlbumViewHolder(albumItemBinding);
+        return new AlbumViewHolder(albumItemBinding, recyclerViewInterface);
     }
 
     @Override
@@ -52,10 +54,24 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public static class AlbumViewHolder extends RecyclerView.ViewHolder {
 
         private AlbumItemBinding albumItemBinding;
+        private RecyclerViewInterface recyclerViewInterface;
 
-        public AlbumViewHolder (AlbumItemBinding albumItemBinding) {
+        public AlbumViewHolder (AlbumItemBinding albumItemBinding, RecyclerViewInterface recyclerViewInterface) {
             super(albumItemBinding.getRoot());
             this.albumItemBinding = albumItemBinding;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
 
     }
