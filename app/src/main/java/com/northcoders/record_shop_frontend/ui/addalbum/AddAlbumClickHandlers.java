@@ -35,7 +35,7 @@ public class AddAlbumClickHandlers {
 
     public void onSaveClicked(View view) {
 
-        if (album.getName() == null || album.getArtist().getName() == null || album.getPublisher().getName() == null || album.getReleaseDate() == null || album.getGenre() == null) {
+        if (album.getName().isBlank() || album.getArtist().getName().isBlank() || album.getPublisher().getName().isBlank() || album.getReleaseDate().isBlank() || album.getGenre() == null) {
             Toast.makeText(context, "No fields can be left empty", Toast.LENGTH_LONG).show();
         } else {
 
