@@ -20,6 +20,7 @@ import retrofit2.Response;
 public class AlbumRepository {
 
     private MutableLiveData<List<Album>> mutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<Album> albumMutableLiveData = new MutableLiveData<>();
     private Application recordShop;
 
     public AlbumRepository(Application recordShop) {
@@ -48,7 +49,7 @@ public class AlbumRepository {
         return mutableLiveData;
     }
 
-    public void postAlbum(Album album) {
+    public MutableLiveData<Album> postAlbum(Album album) {
 
         AlbumApiService albumApiService = RetrofitInstance.getService();
         Call<Album> call = albumApiService.postAlbum(album);
@@ -56,6 +57,9 @@ public class AlbumRepository {
         call.enqueue(new Callback<Album>() {
             @Override
             public void onResponse(Call<Album> call, Response<Album> response) {
+
+                Album postedAlbum = response.body();
+                albumMutableLiveData.setValue(postedAlbum);
 
                 Toast toastSuccess = Toast.makeText(recordShop.getApplicationContext(), "Posting album...", Toast.LENGTH_SHORT);
                 toastSuccess.show();
@@ -68,6 +72,8 @@ public class AlbumRepository {
                 toastFail.show();
             }
         });
+
+        return albumMutableLiveData;
 
     }
 

@@ -3,8 +3,11 @@ package com.northcoders.record_shop_frontend.ui.addalbum;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.northcoders.record_shop_frontend.R;
 import com.northcoders.record_shop_frontend.model.Album;
 import com.northcoders.record_shop_frontend.model.Artist;
 import com.northcoders.record_shop_frontend.model.Publisher;
@@ -18,11 +21,13 @@ public class AddAlbumClickHandlers {
     private Publisher publisher;
     private Context context;
     private MainActivityViewModel mainActivityViewModel;
+    private String genreFromSpinner;
 
-    public AddAlbumClickHandlers(Album album, Artist artist, Publisher publisher, Context context, MainActivityViewModel mainActivityViewModel) {
+    public AddAlbumClickHandlers(Album album, Artist artist, Publisher publisher, String genreFromSpinner, Context context, MainActivityViewModel mainActivityViewModel) {
         this.album = album;
         this.artist = artist;
         this.publisher = publisher;
+        this.genreFromSpinner = genreFromSpinner;
         this.context = context;
         this.mainActivityViewModel = mainActivityViewModel;
     }
@@ -35,7 +40,7 @@ public class AddAlbumClickHandlers {
 
     public void onSaveClicked(View view) {
 
-        if (album.getName().isBlank() || album.getArtist().getName().isBlank() || album.getPublisher().getName().isBlank() || album.getReleaseDate().isBlank() || album.getGenre() == null) {
+        if (album.getName().isBlank() || artist.getName().isBlank() || publisher.getName().isBlank() || album.getReleaseDate().isBlank() || genreFromSpinner.isBlank()) {
             Toast.makeText(context, "No fields can be left empty", Toast.LENGTH_LONG).show();
         } else {
 
@@ -43,11 +48,11 @@ public class AddAlbumClickHandlers {
 
             Artist newArtist = new Artist();
             newArtist.setArtistId(null);
-            newArtist.setName(album.getArtist().getName());
+            newArtist.setName(artist.getName());
 
             Publisher newPublisher = new Publisher();
             newPublisher.setPublisherId(null);
-            newPublisher.setName(album.getPublisher().getName());
+            newPublisher.setName(publisher.getName());
 
 
             Album newAlbum = new Album(
@@ -56,7 +61,7 @@ public class AddAlbumClickHandlers {
                     newArtist,
                     newPublisher,
                     album.getReleaseDate(),
-                    album.getGenre()
+                    genreFromSpinner
             );
 
             mainActivityViewModel.postAlbum(newAlbum);

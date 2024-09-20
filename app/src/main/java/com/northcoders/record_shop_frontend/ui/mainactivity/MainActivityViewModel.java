@@ -25,7 +25,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return albumRepository.getMutableLiveData();
     }
 
-    public void postAlbum(Album album){ albumRepository.postAlbum(album);}
+    public LiveData<Album> postAlbum(Album album){ return albumRepository.postAlbum(album);}
 
     public void updateAlbum(Long id, Album album) { albumRepository.updateAlbum(id, album);}
 

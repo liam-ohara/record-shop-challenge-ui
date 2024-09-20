@@ -2,6 +2,7 @@ package com.northcoders.record_shop_frontend.ui.addalbum;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
     private Album album;
     private Artist artist;
     private Publisher publisher;
+    private String genreFromSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +46,15 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_album);
 
         album = new Album();
+        album.setName("");
         artist = new Artist();
+        artist.setArtistId(null);
+        artist.setName("");
         publisher = new Publisher();
+        publisher.setPublisherId(null);
+        publisher.setName("");
 
         newAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
-
-        MainActivityViewModel viewModel = new ViewModelProvider(this)
-                .get(MainActivityViewModel.class);
-
-        newAlbumBinding.setAlbum(album);
-        newAlbumBinding.setArtist(artist);
-        newAlbumBinding.setPublisher(publisher);
-
-        addAlbumClickHandlers = new AddAlbumClickHandlers(album, artist, publisher, this, viewModel);
-
-        newAlbumBinding.setClickhandler(addAlbumClickHandlers);
 
         String[] genres = getResources().getStringArray(R.array.genres);
         ArrayList<String> genresArrayList = new ArrayList<>(Arrays.asList(genres));
@@ -70,12 +67,14 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         genre_dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Object item = adapterView.getItemAtPosition(i);
-                if (item != null) {
-                    Toast.makeText(AddNewAlbumActivity.this, (CharSequence) item,
+                genreFromSpinner = adapterView.getItemAtPosition(i).toString();
+
+                if (genreFromSpinner != null) {
+                    Toast.makeText(AddNewAlbumActivity.this, (CharSequence) genreFromSpinner,
                             Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(AddNewAlbumActivity.this, "Selected",
@@ -88,18 +87,24 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
             }
         });
+
+
+             MainActivityViewModel viewModel = new ViewModelProvider(this)
+                    .get(MainActivityViewModel.class);
+
+            newAlbumBinding.setAlbum(album);
+            newAlbumBinding.setArtist(artist);
+            newAlbumBinding.setPublisher(publisher);
+            genreFromSpinner = newAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
+
+
+            addAlbumClickHandlers = new AddAlbumClickHandlers(album, artist, publisher, genreFromSpinner, this, viewModel);
+
+            newAlbumBinding.setClickhandler(addAlbumClickHandlers);
+
+
     }
 }
-
-
-
-
-
-//        public boolean onCreateOptionsMenu(Menu menu) {
-//            // Inflate the menu; this adds items to the action bar if it is present.
-//            getMenuInflater().inflate(R., menu);
-//            return true;
-//        }
 
 
 
