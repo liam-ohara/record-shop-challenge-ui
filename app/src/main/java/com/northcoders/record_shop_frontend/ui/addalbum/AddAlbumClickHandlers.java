@@ -6,17 +6,23 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.northcoders.record_shop_frontend.model.Album;
+import com.northcoders.record_shop_frontend.model.Artist;
+import com.northcoders.record_shop_frontend.model.Publisher;
 import com.northcoders.record_shop_frontend.ui.mainactivity.MainActivity;
 import com.northcoders.record_shop_frontend.ui.mainactivity.MainActivityViewModel;
 
 public class AddAlbumClickHandlers {
 
     private Album album;
+    private Artist artist;
+    private Publisher publisher;
     private Context context;
     private MainActivityViewModel mainActivityViewModel;
 
-    public AddAlbumClickHandlers(Album album, Context context, MainActivityViewModel mainActivityViewModel) {
+    public AddAlbumClickHandlers(Album album, Artist artist, Publisher publisher, Context context, MainActivityViewModel mainActivityViewModel) {
         this.album = album;
+        this.artist = artist;
+        this.publisher = publisher;
         this.context = context;
         this.mainActivityViewModel = mainActivityViewModel;
     }
@@ -35,11 +41,20 @@ public class AddAlbumClickHandlers {
 
             Intent intent = new Intent(view.getContext(), MainActivity.class);
 
+            Artist newArtist = new Artist();
+            newArtist.setArtistId(null);
+            newArtist.setName(album.getArtist().getName());
+
+            Publisher newPublisher = new Publisher();
+            newPublisher.setPublisherId(null);
+            newPublisher.setName(album.getPublisher().getName());
+
+
             Album newAlbum = new Album(
                     album.getAlbumId(),
                     album.getName(),
-                    album.getArtist(),
-                    album.getPublisher(),
+                    newArtist,
+                    newPublisher,
                     album.getReleaseDate(),
                     album.getGenre()
             );

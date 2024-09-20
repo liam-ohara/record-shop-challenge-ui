@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.northcoders.record_shop_frontend.R;
 import com.northcoders.record_shop_frontend.databinding.ActivityAddNewAlbumBinding;
 import com.northcoders.record_shop_frontend.model.Album;
+import com.northcoders.record_shop_frontend.model.Artist;
+import com.northcoders.record_shop_frontend.model.Publisher;
 import com.northcoders.record_shop_frontend.ui.mainactivity.MainActivityViewModel;
 
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class AddNewAlbumActivity extends AppCompatActivity {
     private ActivityAddNewAlbumBinding newAlbumBinding;
     private AddAlbumClickHandlers addAlbumClickHandlers;
     private Album album;
+    private Artist artist;
+    private Publisher publisher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_album);
 
         album = new Album();
+        artist = new Artist();
+        publisher = new Publisher();
 
         newAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
@@ -46,8 +52,10 @@ public class AddNewAlbumActivity extends AppCompatActivity {
                 .get(MainActivityViewModel.class);
 
         newAlbumBinding.setAlbum(album);
+        newAlbumBinding.setArtist(artist);
+        newAlbumBinding.setPublisher(publisher);
 
-        addAlbumClickHandlers = new AddAlbumClickHandlers(album, this, viewModel);
+        addAlbumClickHandlers = new AddAlbumClickHandlers(album, artist, publisher, this, viewModel);
 
         newAlbumBinding.setClickhandler(addAlbumClickHandlers);
 
