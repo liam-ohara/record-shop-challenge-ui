@@ -56,7 +56,7 @@ public class UpdateAlbumClickHandlers {
                     album.getGenre()
             );
 
-            mainActivityViewModel.postAlbum(newAlbum);
+            mainActivityViewModel.updateAlbum(newAlbum.getAlbumId(), newAlbum);
 
             context.startActivity(intent);
 
