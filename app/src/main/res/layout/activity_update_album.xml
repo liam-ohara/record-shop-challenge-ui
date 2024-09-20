@@ -17,7 +17,7 @@
             type="com.northcoders.record_shop_frontend.model.Publisher" />
         <variable
             name="clickhandler"
-            type="com.northcoders.record_shop_frontend.ui.addalbum.UpdateAlbumClickHandlers" />
+            type="com.northcoders.record_shop_frontend.ui.updatealbum.UpdateAlbumClickHandlers" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

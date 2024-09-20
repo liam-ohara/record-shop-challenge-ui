@@ -3,12 +3,8 @@ package com.northcoders.record_shop_frontend.ui.updatealbum;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -22,6 +18,7 @@ public class UpdateAlbumActivity extends AppCompatActivity {
 
     private Album album;
     private ActivityUpdateAlbumBinding activityUpdateAlbumBinding;
+    private UpdateAlbumClickHandlers updateAlbumClickHandlers;
     public static final String ALBUM_KEY = "album";
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
@@ -38,9 +35,9 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         MainActivityViewModel viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
 
+        updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, viewModel, this);
 
-
-
+        activityUpdateAlbumBinding.setClickhandler(updateAlbumClickHandlers);
 
     }
 }
