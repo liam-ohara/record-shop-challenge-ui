@@ -1,12 +1,16 @@
 package com.northcoders.record_shop_frontend.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
 import com.northcoders.record_shop_frontend.BR;
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
 
     @SerializedName("albumId")
     private Long albumId;
@@ -31,6 +35,29 @@ public class Album extends BaseObservable {
         this.releaseDate = releaseDate;
         this.genre = genre;
     }
+
+    protected Album(Parcel in) {
+        if (in.readByte() == 0) {
+            albumId = null;
+        } else {
+            albumId = in.readLong();
+        }
+        name = in.readString();
+        releaseDate = in.readString();
+        genre = in.readString();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 
     @Bindable
     public Long getAlbumId() {
@@ -90,5 +117,23 @@ public class Album extends BaseObservable {
     public void setGenre(String genre) {
         this.genre = genre;
         notifyPropertyChanged(BR.genre);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        if (albumId == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(albumId);
+        }
+        parcel.writeString(name);
+        parcel.writeString(releaseDate);
+        parcel.writeString(genre);
     }
 }
