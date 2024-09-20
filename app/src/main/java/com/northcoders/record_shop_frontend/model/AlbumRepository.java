@@ -70,4 +70,30 @@ public class AlbumRepository {
         });
 
     }
+
+    public void updateAlbum(Long id, Album album) {
+
+        AlbumApiService albumApiService = RetrofitInstance.getService();
+        Call<Album> call = albumApiService.updateAlbum(id, album);
+
+        call.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(Call<Album> call, Response<Album> response) {
+
+                Toast toastSuccess = Toast.makeText(recordShop.getApplicationContext(), "Updating album...", Toast.LENGTH_SHORT);
+                toastSuccess.show();
+            }
+
+            @Override
+            public void onFailure(Call<Album> call, Throwable t) {
+
+                Toast toastFail = Toast.makeText(recordShop.getApplicationContext(), "Update failed!", Toast.LENGTH_SHORT);
+                toastFail.show();
+
+            }
+        });
+
+
+
+    }
 }
