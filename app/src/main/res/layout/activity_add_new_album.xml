@@ -99,7 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
-        android:onClick="@{clickhandler::onSaveClicked"
+        android:onClick="@{clickhandler::onSaveClicked}"
        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -113,7 +113,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
-        android:onClick="@{clickhandler::onBackClicked"
+        android:onClick="@{clickhandler::onBackClicked}"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

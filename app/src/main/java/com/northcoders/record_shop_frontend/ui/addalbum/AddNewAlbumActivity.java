@@ -1,5 +1,7 @@
 package com.northcoders.record_shop_frontend.ui.addalbum;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -9,11 +11,20 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.northcoders.record_shop_frontend.R;
 import com.northcoders.record_shop_frontend.databinding.ActivityAddNewAlbumBinding;
 import com.northcoders.record_shop_frontend.model.Album;
 import com.northcoders.record_shop_frontend.ui.mainactivity.MainActivityViewModel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddNewAlbumActivity extends AppCompatActivity {
 
@@ -40,7 +51,48 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         newAlbumBinding.setClickhandler(addAlbumClickHandlers);
 
+        String[] genres = getResources().getStringArray(R.array.genres);
+        ArrayList<String> genresArrayList = new ArrayList<>(Arrays.asList(genres));
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genresArrayList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        Spinner genre_dropdown = (Spinner) findViewById(R.id.genre);
+        genre_dropdown.setAdapter(adapter);
+
+        genre_dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Object item = adapterView.getItemAtPosition(i);
+                if (item != null) {
+                    Toast.makeText(AddNewAlbumActivity.this, (CharSequence) item,
+                            Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(AddNewAlbumActivity.this, "Selected",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }
+
+
+
+
+
+//        public boolean onCreateOptionsMenu(Menu menu) {
+//            // Inflate the menu; this adds items to the action bar if it is present.
+//            getMenuInflater().inflate(R., menu);
+//            return true;
+//        }
+
+
+
+
