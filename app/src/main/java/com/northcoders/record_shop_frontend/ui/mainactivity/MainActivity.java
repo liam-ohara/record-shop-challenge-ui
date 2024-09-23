@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private ActivityMainBinding activityMainBinding;
     private MainActivityClickHandler mainActivityClickHandler;
     public static final String ALBUM_KEY = "album";
+    public static final String ARTIST_KEY = "artist";
+    public static final String PUBLISHER_KEY = "publisher";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent = new Intent(this, UpdateAlbumActivity.class);
 
         intent.putExtra(ALBUM_KEY, albumList.get(position));
+        intent.putExtra(ARTIST_KEY, albumList.get(position));
+        intent.putExtra(PUBLISHER_KEY, albumList.get(position));
 
         startActivity(intent);
 
