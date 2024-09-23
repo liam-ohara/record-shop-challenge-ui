@@ -94,7 +94,7 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         genreFromSpinner = activityUpdateAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
 
 
-        updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, viewModel, this);
+        updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, artist, publisher, genreFromSpinner, viewModel, this);
 
         activityUpdateAlbumBinding.setClickhandler(updateAlbumClickHandlers);
 

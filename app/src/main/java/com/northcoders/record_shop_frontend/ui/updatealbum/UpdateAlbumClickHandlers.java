@@ -14,12 +14,18 @@ import com.northcoders.record_shop_frontend.ui.mainactivity.MainActivityViewMode
 public class UpdateAlbumClickHandlers {
 
     Album album;
+    private Artist artist;
+    private Publisher publisher;
     MainActivityViewModel mainActivityViewModel;
     Long albumId;
     Context context;
+    private String genreFromSpinner;
 
-    public UpdateAlbumClickHandlers(Album album, MainActivityViewModel mainActivityViewModel, Context context) {
+    public UpdateAlbumClickHandlers(Album album, Artist artist, Publisher publisher, String genreFromSpinner, MainActivityViewModel mainActivityViewModel, Context context) {
         this.album = album;
+        this.artist = artist;
+        this.publisher = publisher;
+        this.genreFromSpinner = genreFromSpinner;
         this.mainActivityViewModel = mainActivityViewModel;
         this.context = context;
     }
@@ -53,7 +59,7 @@ public class UpdateAlbumClickHandlers {
                     newArtist,
                     newPublisher,
                     album.getReleaseDate(),
-                    album.getGenre()
+                    genreFromSpinner
             );
 
             mainActivityViewModel.updateAlbum(newAlbum.getAlbumId(), newAlbum);
