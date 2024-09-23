@@ -95,11 +95,11 @@ public class AddNewAlbumActivity extends AppCompatActivity {
              MainActivityViewModel viewModel = new ViewModelProvider(this)
                     .get(MainActivityViewModel.class);
 
-            album.setGenre(genreFromSpinner);
+
             newAlbumBinding.setAlbum(album);
             newAlbumBinding.setArtist(artist);
             newAlbumBinding.setPublisher(publisher);
-//            genreFromSpinner = newAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
+//
 
 
 

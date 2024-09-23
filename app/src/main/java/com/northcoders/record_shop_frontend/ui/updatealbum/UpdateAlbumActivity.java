@@ -67,6 +67,8 @@ public class UpdateAlbumActivity extends AppCompatActivity {
 
                 genreFromSpinner = adapterView.getItemAtPosition(i).toString();
 
+                updateAlbumClickHandlers.setGenreFromSpinner(genreFromSpinner);
+
                 if (genreFromSpinner != null) {
                     Toast.makeText(UpdateAlbumActivity.this, (CharSequence) genreFromSpinner,
                             Toast.LENGTH_SHORT).show();
@@ -90,7 +92,7 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         activityUpdateAlbumBinding.setAlbum(album);
         activityUpdateAlbumBinding.setArtist(artist);
         activityUpdateAlbumBinding.setPublisher(publisher);
-        genreFromSpinner = activityUpdateAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
+
 
         updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, artist, publisher, genreFromSpinner, viewModel, this);
 
