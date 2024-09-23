@@ -42,14 +42,11 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_album);
 
         album = getIntent().getParcelableExtra(ALBUM_KEY, Album.class);
-        album = new Album();
-        album.setName("");
-        artist = new Artist();
-        artist.setArtistId(null);
-        artist.setName("");
-        publisher = new Publisher();
-        publisher.setPublisherId(null);
-        publisher.setName("");
+        assert album != null;
+        //Implement parcelable on artist
+        artist = album.getArtist();
+        //Implement parcelable on publisher
+        publisher = album.getPublisher();
 
         activityUpdateAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_album);
 
@@ -61,6 +58,7 @@ public class UpdateAlbumActivity extends AppCompatActivity {
 
         Spinner genre_dropdown = (Spinner) findViewById(R.id.genre);
         genre_dropdown.setAdapter(adapter);
+        genre_dropdown.setSelection(adapter.getPosition(album.getGenre()));
 
         genre_dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -91,8 +89,6 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         activityUpdateAlbumBinding.setAlbum(album);
         activityUpdateAlbumBinding.setArtist(artist);
         activityUpdateAlbumBinding.setPublisher(publisher);
-        genreFromSpinner = activityUpdateAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
-
 
         updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, artist, publisher, genreFromSpinner, viewModel, this);
 
