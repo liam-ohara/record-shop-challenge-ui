@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent = new Intent(this, UpdateAlbumActivity.class);
 
         intent.putExtra(ALBUM_KEY, albumList.get(position));
-        intent.putExtra(ARTIST_KEY, albumList.get(position));
-        intent.putExtra(PUBLISHER_KEY, albumList.get(position));
+        intent.putExtra(ARTIST_KEY, albumList.get(position).getArtist());
+        intent.putExtra(PUBLISHER_KEY, albumList.get(position).getPublisher());
 
         startActivity(intent);
 

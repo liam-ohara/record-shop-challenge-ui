@@ -38,7 +38,7 @@ public class UpdateAlbumClickHandlers {
 
     public void onSaveClicked(View view) {
 
-        if (album.getName().isBlank() || album.getArtist().getName().isBlank() || album.getPublisher().getName().isBlank() || album.getReleaseDate().isBlank() || album.getGenre() == null) {
+        if (album.getName().isBlank() || artist.getName().isBlank() || publisher.getName().isBlank() || album.getReleaseDate().isBlank() || album.getGenre().isBlank()) {
             Toast.makeText(context, "No fields can be left empty", Toast.LENGTH_LONG).show();
         } else {
 
@@ -46,11 +46,11 @@ public class UpdateAlbumClickHandlers {
 
             Artist newArtist = new Artist();
             newArtist.setArtistId(null);
-            newArtist.setName(album.getArtist().getName());
+            newArtist.setName(artist.getName());
 
             Publisher newPublisher = new Publisher();
             newPublisher.setPublisherId(null);
-            newPublisher.setName(album.getPublisher().getName());
+            newPublisher.setName(publisher.getName());
 
 
             Album newAlbum = new Album(
@@ -59,7 +59,7 @@ public class UpdateAlbumClickHandlers {
                     newArtist,
                     newPublisher,
                     album.getReleaseDate(),
-                    genreFromSpinner
+                    album.getGenre()
             );
 
             mainActivityViewModel.updateAlbum(newAlbum.getAlbumId(), newAlbum);

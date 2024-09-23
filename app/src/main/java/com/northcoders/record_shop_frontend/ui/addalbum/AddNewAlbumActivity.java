@@ -65,6 +65,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         Spinner genre_dropdown = (Spinner) findViewById(R.id.genre);
         genre_dropdown.setAdapter(adapter);
 
+
         genre_dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
@@ -72,6 +73,8 @@ public class AddNewAlbumActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 genreFromSpinner = adapterView.getItemAtPosition(i).toString();
+
+                addAlbumClickHandlers.setGenreFromSpinner(genreFromSpinner);
 
                 if (genreFromSpinner != null) {
                     Toast.makeText(AddNewAlbumActivity.this, (CharSequence) genreFromSpinner,
@@ -92,10 +95,12 @@ public class AddNewAlbumActivity extends AppCompatActivity {
              MainActivityViewModel viewModel = new ViewModelProvider(this)
                     .get(MainActivityViewModel.class);
 
+            album.setGenre(genreFromSpinner);
             newAlbumBinding.setAlbum(album);
             newAlbumBinding.setArtist(artist);
             newAlbumBinding.setPublisher(publisher);
-            genreFromSpinner = newAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
+//            genreFromSpinner = newAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
+
 
 
             addAlbumClickHandlers = new AddAlbumClickHandlers(album, artist, publisher, genreFromSpinner, this, viewModel);

@@ -2,10 +2,13 @@ package com.northcoders.record_shop_frontend.ui.addalbum;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.northcoders.record_shop_frontend.R;
 import com.northcoders.record_shop_frontend.model.Album;
@@ -30,6 +33,10 @@ public class AddAlbumClickHandlers {
         this.genreFromSpinner = genreFromSpinner;
         this.context = context;
         this.mainActivityViewModel = mainActivityViewModel;
+            }
+
+    public void setGenreFromSpinner(String genreFromSpinner) {
+        this.genreFromSpinner = genreFromSpinner;
     }
 
     public void onBackClicked(View view) {

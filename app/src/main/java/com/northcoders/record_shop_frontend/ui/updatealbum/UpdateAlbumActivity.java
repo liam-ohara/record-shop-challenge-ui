@@ -80,6 +80,8 @@ public class UpdateAlbumActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
+
         });
 
         MainActivityViewModel viewModel = new ViewModelProvider(this)
@@ -88,6 +90,7 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         activityUpdateAlbumBinding.setAlbum(album);
         activityUpdateAlbumBinding.setArtist(artist);
         activityUpdateAlbumBinding.setPublisher(publisher);
+        genreFromSpinner = activityUpdateAlbumBinding.genre.getItemAtPosition(genre_dropdown.getSelectedItemPosition()).toString();
 
         updateAlbumClickHandlers = new UpdateAlbumClickHandlers(album, artist, publisher, genreFromSpinner, viewModel, this);
 
