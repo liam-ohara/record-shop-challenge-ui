@@ -34,6 +34,8 @@ public class UpdateAlbumActivity extends AppCompatActivity {
     private ActivityUpdateAlbumBinding activityUpdateAlbumBinding;
     private UpdateAlbumClickHandlers updateAlbumClickHandlers;
     public static final String ALBUM_KEY = "album";
+    public static final String ARTIST_KEY = "artist";
+    public static final String PUBLISHER_KEY = "publisher";
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
@@ -42,11 +44,8 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_album);
 
         album = getIntent().getParcelableExtra(ALBUM_KEY, Album.class);
-        assert album != null;
-        //Implement parcelable on artist
-        artist = album.getArtist();
-        //Implement parcelable on publisher
-        publisher = album.getPublisher();
+        artist = getIntent().getParcelableExtra(ARTIST_KEY, Artist.class);
+        publisher = getIntent().getParcelableExtra(PUBLISHER_KEY, Publisher.class);
 
         activityUpdateAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_album);
 
