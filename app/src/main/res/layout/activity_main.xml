@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
         android:textSize="30dp"
         android:fontFamily="serif-monospace"
@@ -45,13 +45,27 @@
         android:textColor="#ff9900"
         android:fontFamily="serif-monospace"/>
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/white"
+        app:queryHint="Search title..."
+        app:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:background="@drawable/search_view_border"
+        app:theme="@style/search_view_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stock"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/album_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stock"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         />
