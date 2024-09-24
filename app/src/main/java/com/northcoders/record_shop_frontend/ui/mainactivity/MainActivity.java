@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     private RecyclerView recyclerView;
     private List<Album> albumList;
+    private ArrayList<Album> filteredAlbumList;
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     private void filterList(String query) {
 
-        ArrayList<Album> filteredAlbumList = new ArrayList<>();
+        filteredAlbumList = new ArrayList<>();
 
         for(Album album : albumList) {
             if (album.getName().toLowerCase().contains(query.toLowerCase()) || album.getGenre().toLowerCase().contains(query.toLowerCase()) || album.getArtist().getName().toLowerCase().contains(query.toLowerCase()) || album.getPublisher().getName().toLowerCase().contains(query.toLowerCase())) {
@@ -112,9 +113,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         Intent intent = new Intent(this, UpdateAlbumActivity.class);
 
-        intent.putExtra(ALBUM_KEY, albumList.get(position));
-        intent.putExtra(ARTIST_KEY, albumList.get(position).getArtist());
-        intent.putExtra(PUBLISHER_KEY, albumList.get(position).getPublisher());
+        if (filteredAlbumList == null || filteredAlbumList.isEmpty()) {
+            intent.putExtra(ALBUM_KEY, albumList.get(position));
+            intent.putExtra(ARTIST_KEY, albumList.get(position).getArtist());
+            intent.putExtra(PUBLISHER_KEY, albumList.get(position).getPublisher());
+
+        } else {
+            intent.putExtra(ALBUM_KEY, filteredAlbumList.get(position));
+            intent.putExtra(ARTIST_KEY, filteredAlbumList.get(position).getArtist());
+            intent.putExtra(PUBLISHER_KEY, filteredAlbumList.get(position).getPublisher());
+
+        }
 
         startActivity(intent);
 
