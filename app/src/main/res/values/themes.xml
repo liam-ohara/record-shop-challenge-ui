@@ -14,6 +14,13 @@
         <item name="android:textColorHint">@color/white</item>
         <!-- Icon Color -->
         <item name="android:tint">@color/white</item>
+
+        <item name="android:closeIcon">@drawable/baseline_close_24_white</item>
+
+        <item name="closeIconTint">@color/white</item>
+
+        <item name="closeIconVisible" />
+
     </style>
 
 </resources>

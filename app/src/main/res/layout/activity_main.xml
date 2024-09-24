@@ -52,6 +52,7 @@
         android:shadowColor="@color/white"
         app:queryHint="Album name, artist, publisher, genre..."
         app:iconifiedByDefault="false"
+        app:closeIcon="@drawable/baseline_close_24_white"
         android:layout_margin="10dp"
         android:background="@drawable/search_view_border"
         app:theme="@style/search_view_theme"
