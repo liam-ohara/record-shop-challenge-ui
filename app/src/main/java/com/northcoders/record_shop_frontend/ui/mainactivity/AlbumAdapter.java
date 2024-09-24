@@ -13,6 +13,7 @@ import com.northcoders.record_shop_frontend.R;
 import com.northcoders.record_shop_frontend.databinding.AlbumItemBinding;
 import com.northcoders.record_shop_frontend.model.Album;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder> {
@@ -73,6 +74,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 }
             });
         }
+
+    }
+
+    public void setFilteredList (ArrayList<Album> filteredAlbumList) {
+
+        this.albumList = filteredAlbumList;
+        notifyDataSetChanged();
 
     }
 }
