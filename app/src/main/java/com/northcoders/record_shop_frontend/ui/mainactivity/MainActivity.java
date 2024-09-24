@@ -57,13 +57,21 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                filterList(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                return false;
+                filterList(query);
+                return true;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                getAllAlbums();
+                return true;
             }
         });
 
