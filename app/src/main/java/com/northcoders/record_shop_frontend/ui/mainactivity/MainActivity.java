@@ -2,6 +2,8 @@ package com.northcoders.record_shop_frontend.ui.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +50,39 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         mainActivityClickHandler = new MainActivityClickHandler(this);
 
         activityMainBinding.setClickhandler(mainActivityClickHandler);
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterList(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                return false;
+            }
+        });
+
+    }
+
+    private void filterList(String query) {
+
+        ArrayList<Album> filteredAlbumList = new ArrayList<>();
+
+        for(Album album : albumList) {
+            if (album.getName().toLowerCase().contains(query.toLowerCase()) || album.getGenre().toLowerCase().contains(query.toLowerCase()) || album.getArtist().getName().toLowerCase().contains(query.toLowerCase()) || album.getPublisher().getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredAlbumList.add(album);
+            }
+        }
+
+        if (filteredAlbumList.isEmpty()) {
+            Toast.makeText(MainActivity.this, "No matches found", Toast.LENGTH_SHORT).show();
+        } else {
+            albumAdapter.setFilteredList(filteredAlbumList);
+        }
     }
 
     private void getAllAlbums() {
