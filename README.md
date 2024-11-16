@@ -72,3 +72,8 @@ To delete an album from the back-end database, tap the album listed in the Recyc
 
 Tap the delete icon (floating action button) to remove the album from the back-end database.
 ![Delete an album](Screenshot_Update_Album.png "Delete an album")
+
+### Searching for an album
+Search terms can be entered into the SearchView widget that will filter the albums based on
+any combination of album name, artist or release year
+![Search for an album](Screenshot_Search.png "Search for an album")
